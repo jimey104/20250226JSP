@@ -7,11 +7,7 @@
 <%
 DeptDAO deptDAO = new DeptDAO();
 deptDAO.connect();
-for(DeptDTO deptDTO : deptDAO.selectAll()){
-	System.out.println(deptDTO.getDeptno());
-	System.out.println(deptDTO.getDname());
-	System.out.println(deptDTO.getLoc());
-}
+
 EmpDAO empDAO = new EmpDAO();
 for(EmpDTO empDTO : empDAO.selectAll()){
 	System.out.println(empDTO.getEmpno());
@@ -26,6 +22,20 @@ for(EmpDTO empDTO : empDAO.selectAll()){
 <title>Insert title here</title>
 </head>
 <body>
+<table border="1">
+<%
+for(DeptDTO deptDTO : deptDAO.selectAll()){
+%>
 
+	<tr>
+		<td><%=deptDTO.getDeptno() %></td>
+		<td><%=deptDTO.getDname() %></td>
+		<td><%=deptDTO.getLoc() %></td>
+	</tr>
+
+<% 
+}
+%>
+</table>
 </body>
 </html>
